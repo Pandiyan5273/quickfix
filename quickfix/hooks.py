@@ -5,6 +5,7 @@ app_description = "assesment"
 app_email = "pandiyanpalani37@gmail.com"
 app_license = "mit"
 
+fixtures =["Device Type"]
 # Apps
 # ------------------
 
