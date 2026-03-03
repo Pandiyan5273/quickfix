@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "JC-.YYYY.-.#####",
  "creation": "2026-02-25 13:23:52.837726",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -194,10 +195,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-02-25 13:53:37.509524",
+ "modified": "2026-03-03 12:51:48.676409",
  "modified_by": "Administrator",
  "module": "quickfix",
  "name": "Job Card",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {

@@ -5,7 +5,29 @@ app_description = "assesment"
 app_email = "pandiyanpalani37@gmail.com"
 app_license = "mit"
 
-fixtures =["Device Type"]
+fixtures =["Device Type",
+    {
+        "doctype": "Role",
+        "filters": [
+            ["name", "in", [
+                "QF Service Staff",
+                "QF Technician",
+                "QF Manager"
+            ]]
+        ]
+    },
+    {
+        "doctype": "Custom DocPerm",
+        "filters": [
+            ["parent", "in", [
+                "Device Type",
+                "Technician",
+                "Spare Part",
+                "Job Card",
+                "Service Invoice"
+            ]]
+        ]
+    }]
 # Apps
 # ------------------
 

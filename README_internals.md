@@ -26,3 +26,8 @@ C3-Renaming task :
 2.track changes do whatever changes made in the doc it will show below in the doc and it was enable the check button track changes button in doc.
 3.the unique does not allow the duplicate values in column in the table ig the the column index has unique it does not allow the duplicate values in a table .
 the validate function in frappe act as before saving the form it checks all the given functions inside the validate function , Inside that it checks the example "if frappe.db.exists("Customer",{'email':"pandiyan@gmail.com"}) " if runs inside the validate function .if any error or does not exists it does not allow to save the form.
+
+D1 and D2:
+frappe.get_all bypasses all the permission and it fetching all the details so it is unsafe .
+
+the permission query conditions is used to apply automatic row-level filtering to list queries so it has applied for get_list and get_list gives respect for permissions so it applies the permission_query condition and get_all does not applyies any permission_query_conditions.
