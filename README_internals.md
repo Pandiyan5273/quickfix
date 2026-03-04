@@ -89,3 +89,25 @@ printformat- the frappe pass the doc automatically to print the details present 
 
 2.web pages- in web pages there is no automatic doc object is passed the data muat be passed explicitly from python controllers it contaisn custom format to print.
 
+F4- override whitelist method:
+
+override_whiteist_method is a frappe hook that allows developers to replace an existing whitelist api method with a custom implementation the override is defined explicitely in hooks.py file and this not require the modifying the original freamwork code.
+
+monkey patch is a technique where a function or method is replaces during runtime using python imports.this modifies the behaviour of the framework internally without any explicit hook configuration.
+
+override_whitelist_method should be prefer whenever a whitelisted api method needs to be replaced .
+
+TWO apps both register override_whitelisted_methods for the same
+method:
+
+ans: if two apps override same method the last app override method wins.
+
+
+signature mismatch :
+
+original method : get_count(doctype, filters=None, debug=False, cache=False)
+
+when we calling custom_get_count(doctype, filters):
+
+in that time it arises the typeerror :missing required positional argument (..)
+
