@@ -31,3 +31,24 @@ D1 and D2:
 frappe.get_all bypasses all the permission and it fetching all the details so it is unsafe .
 
 the permission query conditions is used to apply automatic row-level filtering to list queries so it has applied for get_list and get_list gives respect for permissions so it applies the permission_query condition and get_all does not applyies any permission_query_conditions.
+
+E1 : Complete Job Card Lifecycle
+
+while we calling the save in on_update it recursivly calling the save function and while calling this it may arise recursion error 
+
+E2: autoname & Renaming
+
+if we put merge=True it has delete already data and replce the new data it has been overridden and , if merge=false it handles proper renaming it does not loss any data while renaming and it also safer to rename the field and it safe for production side also and it update where ever the fields links.
+
+E3-part -B
+
+when to choose override_doctype_class over doc_events
+
+in frappe there os two common ways to customize the behavior of a doctype: override_doctype_class and doc_events.
+1.docevents is generally safer and it additinally added the events to existing events like validate,before_save..
+2.override doctype class replaces the entire doctype class with custom class .
+
+-use doc events for simple event-based customizations 
+-use override doctype class only in deep modificaation of the doctype class behaviour is required.
+
+the doc event is more safer .

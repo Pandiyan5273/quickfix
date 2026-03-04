@@ -28,3 +28,8 @@ def get_job_cards_safe():
             j.pop('customer_email', None)
 
     return jc
+
+@frappe.whitelist()
+def rename_technician( old_name, new_name):
+    frappe.rename_doc("Spare Part", old_name, new_name, merge=True)
+    return f"technician renamed from {old_name} to {new_name}"

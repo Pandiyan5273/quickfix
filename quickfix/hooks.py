@@ -28,6 +28,9 @@ fixtures =["Device Type",
             ]]
         ]
     }]
+
+override_doctype_class = {
+    "Job Card": "quickfix.quickfix.overrides.custom_job_card.CustomJobCard"}
 # Apps
 # ------------------
 

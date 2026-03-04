@@ -13,3 +13,7 @@ class SparePart(Document):
 	def validate(self):
 		if self.selling_price < self.unit_cost:
 			frappe.throw("Selling Price must be greater than Unit Cost")
+
+	def on_update(self):
+		threshold=frappe.db.get_value("Quickfix Settings", None, "low_stock_threshold")
+		""" i use db.get_value performs a direct sql query and it retrives only what the field required , the get_doc loads entire document using the whole object istead we use get_value"""
