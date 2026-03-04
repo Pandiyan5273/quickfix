@@ -31,6 +31,11 @@ fixtures =["Device Type",
 
 override_doctype_class = {
     "Job Card": "quickfix.quickfix.overrides.custom_job_card.CustomJobCard"}
+extend_bootinfo = "quickfix.quickfix.session.extend_bootinfo"
+on_session_creation = "quickfix.quickfix.session.log_login"
+on_logout = "quickfix.quickfix.session.log_logout"
+
+
 # Apps
 # ------------------
 
@@ -52,7 +57,7 @@ override_doctype_class = {
 
 # include js, css files in header of desk.html
 # app_include_css = "/assets/quickfix/css/quickfix.css"
-# app_include_js = "/assets/quickfix/js/quickfix.js"
+app_include_js = "quickfix.bundle.js"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/quickfix/css/quickfix.css"
@@ -112,12 +117,12 @@ override_doctype_class = {
 # ------------
 
 # before_install = "quickfix.install.before_install"
-# after_install = "quickfix.install.after_install"
+after_install = "quickfix.setup.after_install"
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "quickfix.uninstall.before_uninstall"
+before_uninstall = "quickfix.uninstall.before_uninstall"
 # after_uninstall = "quickfix.uninstall.after_uninstall"
 
 # Integration Setup
