@@ -60,3 +60,32 @@ task-b:
 i'll added two validate one is for priority in jobcard.py in the method validate() and i added in hooks.py inside that doc_events -> "Job Card" :path name 
 
 it first executes the contoller method and next goes to doc_events in hooks file.
+
+
+F3-asset ,jinja & website hooks:
+
+Asset- 
+
+app_incluse.js- this loads javascript files globally where we want to use that specifically and it also used as interface such as administrator, the main example when adding functionality to frappe desk ui such as dashboard widgets or any client scripts
+
+web_include.js- it includes only js on website or portal pages and they are accessed by public web interface.
+
+ex- portals,customer-features.
+
+doctype_js- this runs only when a specific doctype form opens for an example job_card.js file activated when the doc opens.
+
+doctype_list_js- it is used to load list view of the doc and it is an access the form control outer side.
+
+doctype_tree_js- this is view like hierarchical doctype ex-in erp the chart of account.
+it is used when doctype represents hierarchical data and is displayed using tree structure.
+
+cache busting- when we change the js files ,the browser caches old details, so the new changes won't appear immediately after refreshing the browser it will clear and loads properly.
+
+bench build- it compile the js and css files and it generate the new hashed file name because the code will changed so it genrated the hash .
+
+jinja hooks- 
+
+printformat- the frappe pass the doc automatically to print the details present in the document 
+
+2.web pages- in web pages there is no automatic doc object is passed the data muat be passed explicitly from python controllers it contaisn custom format to print.
+

@@ -108,11 +108,18 @@ app_include_js = "quickfix.bundle.js"
 # ----------
 
 # add methods and filters to jinja environment
-# jinja = {
-# 	"methods": "quickfix.utils.jinja_methods",
-# 	"filters": "quickfix.utils.jinja_filters"
-# }
-
+jinja = {
+	"methods": ["quickfix.quickfix.session.get_shop_name"],
+	"filters": ["quickfix.quickfix.session.format_job"],
+}
+website_route_rules=[{"from_route":"/track-job","to_route":"track-job"}]
+portal_menu_items = [
+    {
+        "title": "Track My Job",
+        "route": "/track-job",
+        "role": "Guest"
+    }
+]
 # Installation
 # ------------
 
