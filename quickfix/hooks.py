@@ -158,13 +158,16 @@ override_doctype_class = {
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"*": {
+		"on_update": "quickfix.quickfix.audit.log_change",
+		"on_cancel": "quickfix.quickfix.audit.log_change",
+		"on_trash": "quickfix.quickfix.audit.log_change"
+	},
+    "Job Card": {
+        "validate":"quickfix.events.validate_job_card"
+}
+}
 
 # Scheduled Tasks
 # ---------------

@@ -52,3 +52,11 @@ in frappe there os two common ways to customize the behavior of a doctype: overr
 -use override doctype class only in deep modificaation of the doctype class behaviour is required.
 
 the doc event is more safer .
+
+
+F1-doc_events:
+task-b:
+
+i'll added two validate one is for priority in jobcard.py in the method validate() and i added in hooks.py inside that doc_events -> "Job Card" :path name 
+
+it first executes the contoller method and next goes to doc_events in hooks file.

@@ -25,7 +25,8 @@ class JobCard(Document):
 		self.parts_total=parts_tot
 
 		self.final_amount=self.parts_total+self.labour_charge
-
+		if self.priority=='Normal':
+			frappe.throw("Priority cannot be Low for a Job Card.")
 	def permission_query_conditions(self, user):
 		if not user: user = frappe.session.user
 		if "QF Technician" in frappe.get_roles(user):
