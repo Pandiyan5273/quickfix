@@ -19,6 +19,7 @@ def after_install():
         })
         doc.insert(ignore_permissions=True)
     frappe.msgprint("Quickfix App Installed Successfully")
+    frappe.make_property_setter("Job Card","remarks","bold",1,"Check")
 
 def before_uninstall():
     submitted_cards=frappe.db.exists("Job Card",{"docstatus":1})

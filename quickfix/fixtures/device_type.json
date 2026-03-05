@@ -1,23 +1,5 @@
 [
  {
-  "average_repair_hours": 3,
-  "description": "laptop and mobile charger repair",
-  "device_type": "charger",
-  "docstatus": 0,
-  "doctype": "Device Type",
-  "modified": "2026-02-25 16:30:17.042906",
-  "name": "charger"
- },
- {
-  "average_repair_hours": 0,
-  "description": null,
-  "device_type": "Smartphone",
-  "docstatus": 0,
-  "doctype": "Device Type",
-  "modified": "2026-02-25 12:11:00.710703",
-  "name": "Smartphone"
- },
- {
   "average_repair_hours": 0,
   "description": null,
   "device_type": "Laptop",

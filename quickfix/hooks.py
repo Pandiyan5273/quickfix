@@ -27,7 +27,19 @@ fixtures =["Device Type",
                 "Service Invoice"
             ]]
         ]
-    }]
+    },
+    "Custom Field",
+    "Property Setter",
+    "Role",
+    "Workspace",
+    {
+        "doctype":"Device Type",
+        "filters":[
+            ["name","in",["Mobile","Laptop","Tablet"]]
+        ]
+    },
+    "Quickfix Settings"
+    ]
 
 override_doctype_class = {
     "Job Card": "quickfix.quickfix.overrides.custom_job_card.CustomJobCard"}

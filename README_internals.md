@@ -111,3 +111,21 @@ when we calling custom_get_count(doctype, filters):
 
 in that time it arises the typeerror :missing required positional argument (..)
 
+
+F5: Fixtures and property setter in install:
+
+fixtures allow exporting configuration such as custom fields ,property setter ,roles,and workspace fraom database to json file store in the application repository. this ensures that configuration changes are version-controled and automatically applied when the app is installed on another site .
+
+property setters allow modifying existing doctype properties without changing the core frameworks files.this ensure upgrade safe customizations.
+
+fieldname collision can occue if a custom field uses the same fieldname as a filed introduced in a future framwork update .this can cause database conflicts during migrations.to avoid this risk,custom field should be prefixed with application name .
+
+Example :
+
+quickfix.patches.v1.create_custom_field
+quickfix.patches.v1.update_existing_data
+
+patch 1 creates field tracking_id and patch 2 reads the field if the patch runs it first create the field and update the data 
+
+if they merged it may cause the unknown column 'tracking_id".
+
