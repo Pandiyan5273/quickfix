@@ -129,3 +129,26 @@ patch 1 creates field tracking_id and patch 2 reads the field if the patch runs 
 
 if they merged it may cause the unknown column 'tracking_id".
 
+G1-safe monkey patch :
+
+the _qf_patched is an attribute acts as a guard to ensure that monkey patch is applied only once
+
+without this the patch function could run multiple times during lifecycle. 
+
+isolating monkey patch:
+
+isolating monkey patches in a dedicated file improves maintainablity ,if patches scattered in init.py or any other modules they become difficult to track and debug .since init.py runs every time the module is imported .
+by placing all monkey patches in monkey-patches.py the application has contolled application of patchs using apply_all() function.
+
+escalation path:
+
+1.doc_events - is the safest option because it hooks into existing document lifecycle events without modifying the framework code.
+2. override_doctype_class allows extending a doctype class while still preserving core behaviour via inheritance 
+3. override whitelist_methods replaces a specific api endpoint through a controlled hook/
+
+4. monkey patch modifes framework functions directly at runtimethis is the riskiesr approach because it depends on internal framwork implementation details and may break during upgrades.
+
+therefore monkey patch should be used when no official hook exists to achieve the required behaviour.
+
+i think the flow will work like this :
+application start -> apply_all() -> patch get_url() -> _custom_get_url -> prefix added 

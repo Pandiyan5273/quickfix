@@ -1,6 +1,7 @@
 import frappe
-
+from quickfix.monkey_patch import apply_all
 def after_install():
+    apply_all()
     device_type=["Laptop","Desktop","Mobile"]
     for d in device_type:
         if not frappe.db.exists("Device Type",d):
