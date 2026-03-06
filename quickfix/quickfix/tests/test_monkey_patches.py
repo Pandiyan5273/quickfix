@@ -7,6 +7,7 @@ class TestGetUrl:
         frappe.conf.custom_url_prefix = "https://cdn.example.com"
         apply_all()
         url = fu.get_url("/files/test.png")
+        print("url",url)
         assert url.startswith("https://cdn.example.com")
 
     def test_original_behavior_without_prefix(self):

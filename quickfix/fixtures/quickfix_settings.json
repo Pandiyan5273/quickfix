@@ -1,12 +1,12 @@
 [
- {
-  "default_labour_charge": 1000.0,
-  "docstatus": 0,
-  "doctype": "Quickfix Settings",
-  "low_stock_alert_enabled": 1,
-  "manager_email": "22ita36@karpagamtech.ac.in",
-  "modified": "2026-02-25 23:04:24.588123",
-  "name": "QuickFix Settings",
-  "shop_name": "Arunachala"
- }
+    {
+        "default_labour_charge": 1000.0,
+        "docstatus": 0,
+        "doctype": "Quickfix Settings",
+        "low_stock_alert_enabled": 1,
+        "manager_email": "22ita36@karpagamtech.ac.in",
+        "modified": "2026-02-25 23:04:24.588123",
+        "name": "Quickfix Settings",
+        "shop_name": "Arunachala"
+    }
 ]

@@ -5,7 +5,13 @@ app_description = "assesment"
 app_email = "pandiyanpalani37@gmail.com"
 app_license = "mit"
 
-fixtures =["Device Type",
+fixtures = [
+    {
+        "doctype": "Device Type",
+        "filters": [
+            ["name", "in", ["Mobile", "Laptop", "Tablet"]]
+        ]
+    },
     {
         "doctype": "Role",
         "filters": [
@@ -30,14 +36,7 @@ fixtures =["Device Type",
     },
     "Custom Field",
     "Property Setter",
-    "Role",
     "Workspace",
-    {
-        "doctype":"Device Type",
-        "filters":[
-            ["name","in",["Mobile","Laptop","Tablet"]]
-        ]
-    },
     "Quickfix Settings"
     ]
 
