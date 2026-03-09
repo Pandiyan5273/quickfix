@@ -152,3 +152,14 @@ therefore monkey patch should be used when no official hook exists to achieve th
 
 i think the flow will work like this :
 application start -> apply_all() -> patch get_url() -> _custom_get_url -> prefix added 
+
+H1-job card form scripts:
+
+frappe.call- frappe.call inside validate does not work.because frappe.call is async 
+because the validate () is triggered and frappe.call() request sent in that time the validate finishes and doc saved .
+
+onload & refresh :
+this two methods are async because these events happens after the form is rendered,so async calls do not interfere with the save lifecycle
+
+onload- only when form loads
+refresh- ecerytime form refreshes.

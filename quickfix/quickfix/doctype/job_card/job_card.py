@@ -58,7 +58,7 @@ class JobCard(Document):
 			})
 		invoice.insert(ignore_permissions=True)
 
-		frappe.publish_realtime("job_ready", {"job_card": self.name}, user=self.assigned_technician)
+		frappe.publish_realtime("job_ready", {"job_card": self.name}, user=self.owner)
 		frappe.sendmail(
 				recipients=[self.customer_email],
 				subject=f"Your Device is Ready ",
