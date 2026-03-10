@@ -89,11 +89,12 @@ frappe.ui.form.on("Job Card", {
             frappe.prompt(
                 [
                     {
-                        lable:"New Technician",
+                        label:"New Technician",
                         fieldname:"technician",
                         fieldtype:"Link",
                         options:"Technician",
-                        reqd:1
+                        reqd:1,
+                        placeholder:"select technician"
                     }
                 ],
                 function(values){
@@ -112,8 +113,8 @@ frappe.ui.form.on("Job Card", {
                         })
                     })
                 },
-                "Transfer Technician",
-                "Transfer"
+                "Transfer Technician", // title of the popup
+                "Transfer" //primary button
             )
         })
     }

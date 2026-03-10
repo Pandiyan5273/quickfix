@@ -51,3 +51,9 @@ def reject_job(job_card,reason):
     frappe.db.set_value("Job Card",job_card,"status","Draft")
     doc=frappe.get_doc("Job Card",job_card)
     doc.cancel()
+
+@frappe.whitelist()
+def transfer_technician(job_card,technician):
+    doc=frappe.get_doc("Job Card",job_card)
+    doc.db_set("assigned_technician",technician)
+    return "status:success"
