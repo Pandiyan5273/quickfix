@@ -45,3 +45,9 @@ def custom_get_count(doctype, filters=None, debug=False, cache=False):
 def mark_as_delivered(job_card):
     frappe.db.set_value("Job Card",job_card,"status","Delivered")
     return "marked as delivered"
+
+@frappe.whitelist()
+def reject_job(job_card,reason):
+    frappe.db.set_value("Job Card",job_card,"status","Draft")
+    doc=frappe.get_doc("Job Card",job_card)
+    doc.cancel()
