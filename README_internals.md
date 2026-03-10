@@ -163,3 +163,17 @@ this two methods are async because these events happens after the form is render
 
 onload- only when form loads
 refresh- ecerytime form refreshes.
+
+H3-list view and tree view
+
+1.tree doctype is used to represent hierarchical data structures where records contains parent child relationship
+
+example- chart of accounts.
+
+in this doctype it showed tree structure where nodes can expand or collapse to show child records.
+
+parent_field stores the node referance
+is group it identifies whether the node contain children,if true the records acts as a group node.
+
+doctype_tree.js- it is used to customize the behaviour of a tree doctype
+it allows custom button filters and ui customization in tree doctype.
