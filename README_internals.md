@@ -177,3 +177,33 @@ is group it identifies whether the node contain children,if true the records act
 
 doctype_tree.js- it is used to customize the behaviour of a tree doctype
 it allows custom button filters and ui customization in tree doctype.
+
+H4-client script doctype vs shipped js:
+
+frappe allows frontend customization in two ways:
+
+1.client script - it is created from ui and stored in the database
+advantage:
+1.no deployment required
+2.quick customization
+3.easy for consultants
+
+disadvantage:
+1.not version controlled
+2.harder to maintain across environments
+3.risk of script conflicts
+
+shiped JS- this is an written in application code
+
+advantage-
+1.version controlled using git
+2.better maintainability
+3.safer for production environments.
+
+disadvantage-
+1.requires deployment
+2.needs developer access.
+
+Security pitfall- hiding fields with javascript
+
+hiding fields using javascript only affets the user interface , but the field can access via api call .
