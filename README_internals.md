@@ -207,3 +207,12 @@ disadvantage-
 Security pitfall- hiding fields with javascript
 
 hiding fields using javascript only affets the user interface , but the field can access via api call .
+
+I1 -query report with sql safety :
+![before](image-1.png)
+
+the query performance was analyzzed using the EXPLAIN statement in bench console.
+the output showed possible_keys:status_index ,which confirms that  index exists on the status column
+![After](image-2.png)
+
+The output showed possible_keys: status_index, which confirms that an index exists on the status column.

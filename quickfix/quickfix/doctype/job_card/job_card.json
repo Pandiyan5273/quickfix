@@ -189,7 +189,8 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "status",
-   "options": "Draft\nPending Diagnosis\nAwaiting Customer\nApproval\nIn Repair\nReady for Delivery\nDelivered\nCancelled"
+   "options": "Draft\nPending Diagnosis\nAwaiting Customer\nApproval\nIn Repair\nReady for Delivery\nDelivered\nCancelled",
+   "search_index":1
   }
  ],
  "grid_page_length": 50,
