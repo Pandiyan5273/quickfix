@@ -261,3 +261,19 @@ J1 - jinja print format -job card receipt
 in jinja template we use frappe.get_all it becomes very messy and hard to debug and also if wee put inside a for loop on jinja tempate it may occurs N+1 pblm 
 
 2.instead of running query inside the template we may run before template even loads inside the python controller using before_print() hook.
+
+
+j2-raw printing vs html to pdf:
+
+raw printing(esc,pos):binary commands sent directly to thermal printer,no html,no css.
+html to pdf means jinja template goes to html and makes pdf via rendering engine,it supports full layout,fonts,table.
+
+format_value= it for mat the value present on doctype for an example 3000 is final amount means it formats as 3,000
+
+3css not supported:
+display:flex
+position:fixed
+box-shadow
+
+completed - ![alt text](image-3.png)
+
