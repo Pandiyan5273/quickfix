@@ -12,7 +12,7 @@ def execute(filters: dict | None = None):
 	chart=get_chart(data)
 	summary=get_summary(data)
 
-	return columns, data, chart, summary
+	return columns, data,None,chart, summary  
 
 
 def get_columns(filters):

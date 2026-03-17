@@ -216,3 +216,41 @@ the output showed possible_keys:status_index ,which confirms that  index exists 
 ![After](image-2.png)
 
 The output showed possible_keys: status_index, which confirms that an index exists on the status column.
+
+I4-Prepared Report:
+
+real time script report :
+this script runs immediately whn the user clicks run and it fetches data and computes the results on ui.
+
+Prepared report:
+
+this report runs in the background using a worker and stores the result.
+
+when to use :
+1.realtime:
+- small datasets
+- immediate results required
+- interactive analysis
+
+2.prepared:
+- large datasets
+- complex computations
+- scheduled generation
+
+staleness trade-off 
+
+prepared reports return cached data until manually refreshed ,so data may be stale.
+
+caching risk -
+the main risk of prepared reports data is inconsistency like the report does not reflect those changes and user see outdated values.
+
+I5-report builder and custom report:
+
+report builder is a no code tool used to quickly create reports from a single doctype , it is simple report and it mainly used in no complex calculation
+
+script builder -
+
+this reports are used when custom logic or any features required.
+use-
+-complex calculation
+-aggregations across multiple doctypes
