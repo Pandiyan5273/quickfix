@@ -1,5 +1,7 @@
 import frappe
-
+import qrcode
+import io
+import base64
 def send_urgent_alert(job_card, manager):
     subject = f"Urgent Job Card Requires Assignment: {job_card}"
 
@@ -16,3 +18,12 @@ def send_urgent_alert(job_card, manager):
         subject=subject,
         message=message
     )
+
+def get_shop_name():
+    return "QuickFix Repair Center"
+
+def generate_qr(data):
+    img=qrcode.make(data)
+    buffer=io.BytesIO()
+    img.save(buffer, format="PNG")
+    return base64.b64encode(buffer.getvalue()).decode()

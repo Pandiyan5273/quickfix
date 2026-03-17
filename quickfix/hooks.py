@@ -120,7 +120,7 @@ app_include_js = "quickfix.bundle.js"
 
 # add methods and filters to jinja environment
 jinja = {
-	"methods": ["quickfix.quickfix.session.get_shop_name"],
+	"methods": ["quickfix.quickfix.session.get_shop_name","quickfix.utils.generate_qr"],
 	"filters": ["quickfix.quickfix.session.format_job"],
 }
 website_route_rules=[{"from_route":"/track-job","to_route":"track-job"}]

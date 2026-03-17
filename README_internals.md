@@ -254,3 +254,10 @@ this reports are used when custom logic or any features required.
 use-
 -complex calculation
 -aggregations across multiple doctypes
+
+
+J1 - jinja print format -job card receipt
+
+in jinja template we use frappe.get_all it becomes very messy and hard to debug and also if wee put inside a for loop on jinja tempate it may occurs N+1 pblm 
+
+2.instead of running query inside the template we may run before template even loads inside the python controller using before_print() hook.

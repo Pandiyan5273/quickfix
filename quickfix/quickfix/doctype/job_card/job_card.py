@@ -81,5 +81,7 @@ class JobCard(Document):
 		if self.status not in ["Cancelled", "Draft"]:
 			frappe.throw("Only Job Cards in Draft or Cancelled status can be deleted.")
 
+	def before_print(self,settings=None):
+		self.print_summary =f"{self.customer_name} - {self.device_brand} {self.device_model} "
 	# def on_update(self):
 	# 	self.save()
