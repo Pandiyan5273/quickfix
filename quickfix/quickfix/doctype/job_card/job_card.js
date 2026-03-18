@@ -44,7 +44,8 @@ frappe.ui.form.on("Job Card", {
                 frappe.call({
                     method:"quickfix.api.mark_as_delivered",
                     args:{
-                        job_card:frm.doc.name
+                        job_card:frm.doc.name,
+                        customer_email:frm.doc.customer_email
                     },
                     callback:function(){
                         frm.reload_doc();

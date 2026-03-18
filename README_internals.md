@@ -6,6 +6,24 @@ A2 - Multi-Site & Configuration :
 
 2. if we hit the command bench start it will goes to procfile in that file contains the web,socket.io,watch,schedule,redis cache and queue 
 
+## Queue Names in Quickfix
+
+There are three main queue names used for background jobs:
+
+- **default**: For standard tasks that do not require special timing or resources. Use for most jobs that are neither urgent nor long-running.
+- **long**: For jobs that require extended processing time (e.g., report generation, heavy computation). Use when a task may take several minutes or more; set a higher timeout as needed.
+- **short**: For quick, lightweight tasks (e.g., sending emails, notifications). Use for jobs that should finish rapidly and not block other tasks.
+
+**When to use each:**
+- Use `default` for typical business logic and background tasks.
+- Use `long` for scheduled reports, data exports, or anything needing more than a few minutes.
+- Use `short` for fast operations like sending emails or alerts.
+
+Example:
+```
+frappe.enqueue("quickfix.api.generate_monthly_revenue_report", queue="long", timeout=600)
+```
+
 * the web will initialize the http port to start
 * worker is used to finish a job given by redis_queue or any background jobs in developer mode it contains only one worker 
 * scheduler is used to trigger the cron jobs and it queued to redis_queue at correct time to accomplish the job 
@@ -277,3 +295,12 @@ box-shadow
 
 completed - ![alt text](image-3.png)
 
+k- task-A
+
+short- for fast ,lightweight task that must finish quickly and if a slow job enters in this queue it blocks other quick jobs 
+use-sending mails,sms
+
+default- for standard background tasks of moderate weight ,this is default when no queue is specified.
+use-small reports,syncing records.
+
+long- for heavy time consuming operations use long queue like monthly reports bulk data migrations,etc..

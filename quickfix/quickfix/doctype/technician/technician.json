@@ -84,7 +84,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-25 23:11:50.648612",
+ "modified": "2026-03-18 12:04:09.100804",
  "modified_by": "Administrator",
  "module": "quickfix",
  "name": "Technician",
@@ -106,7 +106,9 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "search_fields": "phone,email",
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "employee_id"
 }
