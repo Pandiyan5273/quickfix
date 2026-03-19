@@ -198,7 +198,12 @@ doc_events = {
 scheduler_events = {
     "daily": [
         "quickfix.api.check_low_stock"
-    ]
+    ],
+    "cron":{
+        "0 2 1 * *":[
+            "quickfix.api.generate_monthly_revenue_report"
+        ]
+    }
 }
 # 	"daily": [
 # 		"quickfix.tasks.daily"

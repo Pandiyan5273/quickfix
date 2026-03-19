@@ -304,3 +304,9 @@ default- for standard background tasks of moderate weight ,this is default when 
 use-small reports,syncing records.
 
 long- for heavy time consuming operations use long queue like monthly reports bulk data migrations,etc..
+
+
+k2-scheduler events :
+
+if the worker is down scheduled jobs are still added to the queue by the scheduler but are not executed ,once the worker comes back up it processes all pending jobs in the queue.
+thhis can lead to delayed execution and in some cases,outdated jobs may still run unless explicitly handled.
