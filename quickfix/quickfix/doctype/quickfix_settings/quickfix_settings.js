@@ -8,5 +8,13 @@ frappe.ui.form.on("Quickfix Settings", {
                 method: "quickfix.api.enqueue_monthly_revenue_report"
             });
         });
+        frm.add_custom_button("show revenue",function(){
+            frappe.call({
+                method:"quickfix.api.show_revenue",
+                args:{
+                    year:new Date().getFullYear()
+                }
+            });
+        })
     }   
 	});

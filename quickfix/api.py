@@ -126,8 +126,27 @@ def check_low_stock():
     if last_run:
         frappe.log_error("this function is already called")
         return
-    low_stock_item=frappe.get_all("Spare part",{"stock_quantity":["<",5]},fields=["name","stock_quantity"])
+    low_stock_item = frappe.get_all("Spare Part", filters={"stock_qty": ["<", 5]}, fields=["name", "stock_qty"])
     for item in low_stock_item:
-        frappe.log_error(f"Low stock alert: {item['name']} has only {item['stock_quantity']} left in stock.")
+        frappe.log_error(f"Low stock alert: {item['name']} has only {item['stock_qty']} left in stock.")
     frappe.get_doc({"doctype":"Audit Log","action":"low_stock_check","timestamp":today()}).insert(ignore_permissions=True)
     frappe.db.commit()
+
+@frappe.whitelist()
+def show_revenue():
+    months=range(1,13)
+    tot_year_revenue=0
+    for i,month in enumerate(months,1):
+        print(i,month)
+        monthly_revenue=frappe.db.sql("""
+                                      select sum(final_amount)
+                                      from `tabJob Card`
+                                      where year(creation)=%s
+                                      and month(creation)=%s
+                                      and docstatus =1
+                                      """,(today(),month))[0][0] or 0
+        tot_year_revenue+=monthly_revenue
+
+        frappe.publish_progress(percent=int(i/12*100), title=f"Calculating revenue for month {month}", description=f"Revenue: {monthly_revenue}")
+    frappe.msgprint(f"Total revenue for the year {today()} is {tot_year_revenue}")
+    return tot_year_revenue
