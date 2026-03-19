@@ -195,10 +195,11 @@ doc_events = {
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"quickfix.tasks.all"
-# 	],
+scheduler_events = {
+	"daily": [
+		"quickfix.api.check_low_stock"
+	],
+}
 # 	"daily": [
 # 		"quickfix.tasks.daily"
 # 	],

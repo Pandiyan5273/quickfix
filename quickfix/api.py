@@ -118,3 +118,16 @@ def generate_monthly_revenue_report(start_date=None, end_date=None):
         attachments=[{"fname": "Technician_Performance_Report.pdf", "fcontent": pdf}]
     )
     return f"Report sent to {manager_email}"
+
+from frappe.utils import today
+@frappe.whitelist()
+def check_low_stock():
+    last_run=frappe.db.get_value('Audit Log',{"action":"low_stock_check","timestamp":["like",today()+ "%"]},"name")
+    if last_run:
+        frappe.log_error("this function is already called")
+        return
+    low_stock_item=frappe.get_all("Spare part",{"stock_quantity":["<",5]},fields=["name","stock_quantity"])
+    for item in low_stock_item:
+        frappe.log_error(f"Low stock alert: {item['name']} has only {item['stock_quantity']} left in stock.")
+    frappe.get_doc({"doctype":"Audit Log","action":"low_stock_check","timestamp":today()}).insert(ignore_permissions=True)
+    frappe.db.commit()
