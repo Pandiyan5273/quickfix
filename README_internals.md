@@ -310,3 +310,33 @@ k2-scheduler events :
 
 if the worker is down scheduled jobs are still added to the queue by the scheduler but are not executed ,once the worker comes back up it processes all pending jobs in the queue.
 thhis can lead to delayed execution and in some cases,outdated jobs may still run unless explicitly handled.
+
+k3-performance engineering:
+
+there is two type solution 
+
+1.select
+    t.technician_name,
+    t.phone
+from`tabJob Card` jc
+left join `tabTechnician` t
+ON t.name = jc.assigned_technician
+
+2. job=frappe.get_all("Job Cards",fields=["name","assigned_technician])
+tech_id=list({jc.assigned_technician for jc in job if jc.assigned_technician})
+
+techinicians= frappe.get_all("Technician",filters={"name":["in",tech_id]},
+fields=["name","technician_name","phone"])
+
+tech_map={t.name:t for t in technicians}
+
+result=[]
+for jc in job:
+    tech=tech_map.get(jc.assigned_technician)
+    result.append({
+        "job_card":jc.name,
+        "tech_name":tech.technician_name,
+        "phone":tech.phone
+    })
+
+print(results)
