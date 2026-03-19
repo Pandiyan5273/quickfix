@@ -150,3 +150,12 @@ def show_revenue():
         frappe.publish_progress(percent=int(i/12*100), title=f"Calculating revenue for month {month}", description=f"Revenue: {monthly_revenue}")
     frappe.msgprint(f"Total revenue for the year {today()} is {tot_year_revenue}")
     return tot_year_revenue
+
+
+def failure_enqueue():
+    frappe.logger("quickfix").info("This is a failure function to test retry mechanism.")
+    raise Exception(" failure to test retry mechanism.")
+@frappe.whitelist()
+def failure_function():
+    frappe.enqueue("quickfix.api.failure_enqueue", queue="long", timeout=300,retry=Retry(max=3,interval=[10,30,60]))
+
