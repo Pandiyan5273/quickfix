@@ -159,3 +159,27 @@ def failure_enqueue():
 def failure_function():
     frappe.enqueue("quickfix.api.failure_enqueue", queue="long", timeout=300,retry=Retry(max=3,interval=[10,30,60]))
 
+@frappe.whitelist()
+def bulk_cancel_job_cards():
+    frappe.db.sql("""
+                update `tabJob Card`
+                set status='Cancelled'
+                where docstatus=0
+                limit 1000
+                  """)
+    frappe.db.commit()
+    return "1000 draft jobs deleted"
+
+@frappe.whitelist()
+def bulk_insert_audit_log():
+    data=[]
+    for i in range(500):
+        data.append({
+            "name":f"Audit-{i}",
+            "doctype":"Audit Log",
+            "action":"bulk_insert_test",
+            "user":frappe.session.user,
+            "timestamp":frappe.utils.now()
+        })
+    frappe.db.bulk_insert("Audit Log",data)
+    return "500 audit logs created"
